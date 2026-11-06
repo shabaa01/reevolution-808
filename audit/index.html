@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>ReEvolution Site Audit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: a single reading column like a printed inspection report, findings graded by severity. */
+:root{
+ --bg:#FBFAF8;--surface:#FFFFFF;--fg:#1B1C1F;--muted:#5E6169;--line:#E5E2DC;
+ --accent:#B3122B;--accent-soft:#FBE9EC;--high:#B3122B;--med:#B8660B;--med-soft:#FDF1E2;--ok:#1E7046;--ok-soft:#E5F3EA;
+ --display:"Fraunces",Georgia,serif;--body:"Source Sans 3",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+ --bg:#141518;--surface:#1D1F23;--fg:#ECEBE7;--muted:#A3A6AE;--line:#2E3036;
+ --accent:#F0657A;--accent-soft:#3A1B21;--high:#F0657A;--med:#F0A64A;--med-soft:#3A2A16;--ok:#5FCB8D;--ok-soft:#183024;color-scheme:dark}}
+:root[data-theme="dark"]{
+ --bg:#141518;--surface:#1D1F23;--fg:#ECEBE7;--muted:#A3A6AE;--line:#2E3036;
+ --accent:#F0657A;--accent-soft:#3A1B21;--high:#F0657A;--med:#F0A64A;--med-soft:#3A2A16;--ok:#5FCB8D;--ok-soft:#183024;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
+.page{max-width:820px;margin:0 auto;padding-block:48px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:40px}
+.kicker{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15}
+h1{font-size:clamp(32px,5vw,46px);margin-top:10px}
+h2{font-size:28px}
+h3{font-size:21px}
+.meta{color:var(--muted);font-size:15px;margin-top:10px}
+.verdict{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 26px}
+.verdict p{margin-top:8px}
+.score{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.pill{font-size:14px;font-weight:700;padding:5px 12px;border-radius:30px}
+.p-high{background:var(--accent-soft);color:var(--high)}
+.p-med{background:var(--med-soft);color:var(--med)}
+.p-ok{background:var(--ok-soft);color:var(--ok)}
+section{display:flex;flex-direction:column;gap:18px}
+.finding{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--high);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.finding.med{border-left-color:var(--med)}
+.finding.ok{border-left-color:var(--ok)}
+.finding .tag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.finding.high .tag{color:var(--high)}.finding.med .tag{color:var(--med)}.finding.ok .tag{color:var(--ok)}
+.finding p{color:var(--muted)}
+.finding p b{color:var(--fg)}
+.fix{font-size:15.5px;color:var(--fg)!important}
+.fix:before{content:"How we'd fix it: ";font-weight:700;color:var(--ok)}
+figure{margin-top:6px}
+figure img{width:100%;border-radius:8px;border:1px solid var(--line);display:block}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:6px}
+ul.good{list-style:none;display:grid;gap:8px}
+ul.good li{padding-left:26px;position:relative}
+ul.good li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.cta{background:var(--fg);color:var(--bg);border-radius:16px;padding:28px}
+.cta h2{color:var(--bg)}
+.cta p{margin-top:10px;opacity:.85}
+.cta ol{margin:14px 0 0 20px;display:grid;gap:6px}
+.sign{color:var(--muted);font-size:15px}
+</style>
+
+<main class="page">
+ <header>
+  <div class="kicker">Website audit · SignalCRM AI</div>
+  <h1>reevolutionproperties808.com: what's holding it back</h1>
+  <p class="meta">Prepared for Carolynne Durant-Hall, ReEvolution Properties 808 · Reviewed November 6, 2026 · Every finding below was checked on the live site.</p>
+ </header>
+
+ <div class="verdict">
+  <h3>The short version</h3>
+  <p>Your site loads fast and has the right pages, but it's a 2023 template that was never made yours. It tries to talk to buyers, sellers, investors, agents and contractors all at once, so a homeowner who needs to sell doesn't see a clear reason to call you. A few problems also cost you trust and leads every day.</p>
+  <div class="score"><span class="pill p-high">3 urgent fixes</span><span class="pill p-med">5 ways it's costing you leads</span><span class="pill p-ok">5 things already working</span></div>
+ </div>
+
+ <section>
+  <h2>Urgent: fix these first</h2>
+
+
+  <div class="finding high">
+   <span class="tag">Trust</span>
+   <h3>The testimonials are the template's samples</h3>
+   <p>"John D.", "Jim D." and "Kristen W." with general praise come with the website template. Your Reviews page and Current Projects page are also empty. A homeowner deciding whether to trust you with their house will notice.</p>
+   <figure><img src="img/current-reviews.jpg" alt="Testimonials section on the current homepage"><figcaption>The homepage testimonial slider.</figcaption></figure>
+   <p class="fix">Show your real Google reviews automatically, plus before-and-after photos of projects you've completed.</p>
+  </div>
+
+  <div class="finding high">
+   <span class="tag">Trust</span>
+   <h3>Template leftovers make it look unfinished</h3>
+   <p>The header still carries the template's default tagline, <b>"Just another SiteBuilder site"</b>, in the code Google reads. The homepage video uses a stock presenter, not you, and the photos are stock images of mainland houses.</p>
+   <figure><img src="img/current-desktop.jpg" alt="Current homepage"><figcaption>The current homepage.</figcaption></figure>
+   <p class="fix">Put you, your Oahu projects and your local story front and center.</p>
+  </div>
+
+  <div class="finding high">
+   <span class="tag">Worth a quick check</span>
+   <h3>The site says two different things about what you do</h3>
+   <p>The footer says <b>"We are not a Real Estate Broker,"</b> but the homepage offers to "price your home competitively, market it effectively, and negotiate the best possible terms," which reads like a listing agent. The About page also lists Credit Repair and Debt Removal. Since those services are regulated, it's worth a quick look with your licensed partner or attorney.</p>
+   <p class="fix">Say clearly what you do: you buy houses directly, as-is, and refer sellers to a licensed agent when listing is better for them.</p>
+  </div>
+ </section>
+
+ <section>
+  <h2>Costing you leads</h2>
+
+  <div class="finding med">
+   <span class="tag">Message</span>
+   <h3>The headline could belong to any company</h3>
+   <p>"We Help You Realize Your Real Estate Goals" doesn't tell a homeowner what you do, where, or why to call you instead of anyone else.</p>
+   <p class="fix">"Sell your Oahu house as-is. A fair cash offer in 48 hours."</p>
+  </div>
+
+  <div class="finding med">
+   <span class="tag">Focus</span>
+   <h3>Six audiences compete for attention</h3>
+   <p>Buyers, sellers, investors, agents, contractors and wholesale content all get equal space, so no one feels the site was built for them.</p>
+   <p class="fix">Lead with homeowners who need to sell. Give investors their own page, and move agents and contractors to the footer.</p>
+  </div>
+
+  <div class="finding med">
+   <span class="tag">Forms</span>
+   <h3>The forms ask for too much</h3>
+   <p>The buyer form asks for a full address and makes Hawaii visitors scroll a 50-state list. The homepage form asks only for an address, with no name or phone, so you can't follow up with people who stop there.</p>
+   <p class="fix">A 60-second, 4-step form: address, condition, timeline, then name and phone, with text-message consent.</p>
+  </div>
+
+  <div class="finding med">
+   <span class="tag">Measurement</span>
+   <h3>No way to know what's working</h3>
+   <p>There's no Google Analytics, Facebook pixel or call tracking installed, so there's no record of how many people visit, where they come from, or which pages bring calls.</p>
+   <p class="fix">Install tracking on day one and send you a simple monthly report.</p>
+  </div>
+
+  <div class="finding med">
+   <span class="tag">Google search</span>
+   <h3>Google has little to work with</h3>
+   <p>Pages have no search descriptions, the main page heading is literally "Home," and the blog hasn't had a new post since March 2023.</p>
+   <p class="fix">Local pages for each situation and area (inherited houses, foreclosure, Ewa, Kapolei, Waipahu) that Google can match to real searches.</p>
+  </div>
+ </section>
+
+ <section>
+  <h2>What's already working</h2>
+  <div class="finding ok">
+   <ul class="good">
+    <li>The site loads quickly.</li>
+    <li>It works well on a phone, and your number is in the header.</li>
+    <li>You already have investor and contractor sign-up pages.</li>
+    <li>Your hibiscus logo and Oahu focus give you a real local identity.</li>
+    <li>Your About page shows BBB Accreditation with an A+ rating since 2019. That's strong proof the homepage doesn't use yet.</li>
+   </ul>
+  </div>
+ </section>
+
+ <div class="cta">
+  <h2>What a rebuild would look like</h2>
+  <p>We took the liberty of designing how we'd rebuild your site around homeowners who need to sell, using your own offer: a fair cash offer in 48 hours, as-is, no commissions when you buy. It's in the second link we sent with this report.</p>
+  <ol>
+   <li>A seller-first homepage with a 60-second offer form</li>
+   <li>An instant text to every new lead, and an alert to your phone</li>
+   <li>A seller pipeline, missed-call text back and follow-up for sellers who aren't ready yet</li>
+   <li>Automatic Google review requests after every closing</li>
+  </ol>
+ </div>
+
+ <p class="sign">Prepared by SignalCRM AI, a Hawaii agency that builds websites and automations for local businesses.</p>
+</main>
+</html>
